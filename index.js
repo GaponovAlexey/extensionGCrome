@@ -8,7 +8,7 @@ setInterval(updateClock, 1000);
 
 document.addEventListener("keydown", event => {
   if(event.code === "Enter") {
-    console.log("Enter")
+    clock.classList.toggle('hide')
     
   }
 })
