@@ -11,6 +11,7 @@ chrome.storage.local.get(["display"], (result) => {
   }
 });
 
+
 chrome.storage.onChanged.addListener((changes, namespace) => {
   clock.classList.toggle('hide') 
   console.log(changes)
