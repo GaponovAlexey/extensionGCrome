@@ -14,13 +14,11 @@ chrome.storage.local.get(["display"], (result) => {
 
 chrome.storage.onChanged.addListener((changes, namespace) => {
   clock.classList.toggle('hide') 
-  console.log(changes)
 })
 
 
 document.addEventListener("keydown", function (event) {
   if (event.code === "Enter") {
-    console.log(event);
     chrome.storage.local.set({
       display: clock.classList.contains("hide"),
     });
