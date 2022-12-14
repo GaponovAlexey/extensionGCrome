@@ -5,13 +5,26 @@ document.body.append(clock);
 
 setInterval(updateClock, 1000);
 
-
-document.addEventListener("keydown", event => {
-  if(event.code === "Enter") {
-    clock.classList.toggle('hide')
-    
+chrome.storage.local.get(["display"], (result) => {
+  if (result.display) {
+    clock.classList.remove("hide");
   }
+});
+
+chrome.storage.onChanged.addListener((changes, namespace) => {
+  clock.classList.toggle('hide') 
+  console.log(changes)
 })
+
+
+document.addEventListener("keydown", function (event) {
+  if (event.code === "Enter") {
+    console.log(event);
+    chrome.storage.local.set({
+      display: clock.classList.contains("hide"),
+    });
+  }
+});
 
 function updateClock() {
   const date = new Date();
