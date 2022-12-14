@@ -5,6 +5,14 @@ document.body.append(clock);
 
 setInterval(updateClock, 1000);
 
+
+document.addEventListener("keydown", event => {
+  if(event.code === "Enter") {
+    console.log("Enter")
+    
+  }
+})
+
 function updateClock() {
   const date = new Date();
 
